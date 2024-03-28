@@ -7,7 +7,7 @@ $(function (){
             , enctype: 'multipart/form-data'
             , processData: false
             , contentType: false
-            , url:'/user/upload'
+            , url: '/user/upload'
             , data: formData
             , success: function(data){
                 alert(data)

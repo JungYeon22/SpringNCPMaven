@@ -40,13 +40,14 @@
 
     <tr>
       <td colspan="2" align="center">
-        <input type="submit" value="이미지 업로드" id="uploadAJaxBtn">
+        <input type="button" value="이미지 업로드" id="uploadAJaxBtn">
         <input type="reset" value="취소">
       </td>
     </tr>
   </table>
 </form>
 <script src="https://code.jQuery.com/jquery-3.7.1.min.js"></script>
+<script src="../js/uploadAJax.js"></script>
 <script>
   $('#camera').click(function(){
     //강제 이벤트 발생 -> 트리거
@@ -76,6 +77,6 @@
     reader.readAsDataURL(file);
   }
 </script>
-<script src="../js/uploadAJax.js"/>
+
 </body>
 </html>
