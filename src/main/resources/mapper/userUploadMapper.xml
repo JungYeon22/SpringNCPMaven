@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user.dao.UserUploadDAO">
+
+    <insert id="upload" parameterType="UserImageDTO">
+        insert into userimage(imageName, imageContent, imageFileName, imageOriginalName)
+        values(#{imageName}, #{imageContent}, #{imageFileName}, #{imageOriginalName})
+    </insert>
+    <!--SQL문을 실행할 때, 넘어오는 parameterType이 List인 경우
+     forEach태그의 collection 속성에 사용할 수 있는 이름은 list 또는 Collection이 가능한다.-->
+<!--    <insert id="upload">
+        insert into userimage(imagename, imagecontent, imageFileName, imageOriginalName)
+        values
+        <foreach collection="list" item="dto" separator=",">
+            (#{dto.image-name}, #{dto.imagecontent}, #{dto.imageFileName}, #{dto.imageOriginalName})
+        </foreach>
+    </insert>-->
+
+    <select id="getUploadList" resultType="UserImageDTO">
+        select * from userimage order by seq desc
+    </select>
+
+    <select id="getUpload" parameterType="int" resultType="UserImageDTO">
+        select * from userimage where seq=#{seq}
+    </select>
+
+    <update id="uploadUpdate" parameterType="UserImageDTO">
+        update userimage
+        set imageName=#{imageName}, imageContent=#{imageContent}, imageFileName=#{imageFileName}, imageOriginalName=#{imageOriginalName}
+        where seq=#{seq}
+    </update>
+
+    <delete id="uploadDelete" parameterType="int">
+        delete from userimage where seq=#{seq}
+    </delete>
+
+    <delete id="uploadDeleteList" >
+
+    </delete>
+
+</mapper>
